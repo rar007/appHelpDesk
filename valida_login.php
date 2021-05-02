@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $usuario_autenticado = false;
     $usuario_sistema = array(
         array('email' => 'adm@teste.com.br', 'senha' => '123456'),
@@ -19,7 +20,9 @@
 
     if($usuario_autenticado){
         echo "Usuario autenticado com sucesso";
+        $_SESSION['autenticado'] = 'SIM';
     }
     else {
+        $_SESSION['autenticado'] = 'NAO';
         header('Location: index.php?login=erro');
     }
