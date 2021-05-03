@@ -38,15 +38,15 @@
               <div class="row">
                 <div class="col">
                   
-                  <form>
+                  <form method="POST" action="registra_chamado.php">
                     <div class="form-group">
                       <label>Título</label>
-                      <input type="text" class="form-control" placeholder="Título">
+                      <input name="titulo" type="text" class="form-control" placeholder="Título">
                     </div>
                     
                     <div class="form-group">
                       <label>Categoria</label>
-                      <select class="form-control">
+                      <select name="categoria" class="form-control">
                         <option>Criação Usuário</option>
                         <option>Impressora</option>
                         <option>Hardware</option>
@@ -57,9 +57,19 @@
                     
                     <div class="form-group">
                       <label>Descrição</label>
-                      <textarea class="form-control" rows="3"></textarea>
+                      <textarea name="descricao" class="form-control" rows="3"></textarea>
                     </div>
-
+                    <?php
+                      if(isset($_GET['sucesso'])) : ?>
+                        <div class="text-success">
+                          Chamado criado com Sucesso
+                        </div>
+                    <?php 
+                      elseif(isset($_GET['error'])) : ?>
+                        <div class="text-danger">
+                          Não foi possivel abrir o chamado
+                        </div>
+                    <?php endif; ?>
                     <div class="row mt-5">
                       <div class="col-6">
                         <a class="btn btn-lg btn-warning btn-block" href="home.php">Voltar</a>
